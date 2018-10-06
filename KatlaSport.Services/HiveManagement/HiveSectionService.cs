@@ -32,7 +32,7 @@ namespace KatlaSport.Services.HiveManagement
         public async Task<List<HiveSectionListItem>> GetHiveSectionsAsync()
         {
             var dbHiveSections = await _context.Sections.OrderBy(s => s.Id).ToArrayAsync();
-            var hiveSections = dbHiveSections.Select(s => Mapper.Map<HiveSectionListItem>(s)).ToList();
+            var hiveSections = dbHiveSections.Select(Mapper.Map<HiveSectionListItem>).ToList();
             return hiveSections;
         }
 
@@ -52,14 +52,29 @@ namespace KatlaSport.Services.HiveManagement
         public async Task<List<HiveSectionListItem>> GetHiveSectionsAsync(int hiveId)
         {
             var dbHiveSections = await _context.Sections.Where(s => s.StoreHiveId == hiveId).OrderBy(s => s.Id).ToArrayAsync();
-            var hiveSections = dbHiveSections.Select(s => Mapper.Map<HiveSectionListItem>(s)).ToList();
+            var hiveSections = dbHiveSections.Select(Mapper.Map<HiveSectionListItem>).ToList();
             return hiveSections;
         }
 
         /// <inheritdoc/>
         public async Task SetStatusAsync(int hiveSectionId, bool deletedStatus)
         {
-            throw new NotImplementedException();
+            var dbHiveSections = await _context.Sections.Where(s => s.Id == hiveSectionId).ToArrayAsync();
+
+            if (dbHiveSections.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException($"Hive section not found in {nameof(SetStatusAsync)}");
+            }
+
+            var dbHiveSection = dbHiveSections[0];
+
+            if (dbHiveSection.IsDeleted != deletedStatus)
+            {
+                dbHiveSection.IsDeleted = deletedStatus;
+                dbHiveSection.LastUpdated = DateTime.UtcNow;
+                dbHiveSection.LastUpdatedBy = _userContext.UserId;
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
