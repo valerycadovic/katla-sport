@@ -73,6 +73,14 @@
     <Compile Include="Migrations\201810030903589_AddProductDescriptionManCodePrice.Designer.cs">
       <DependentUpon>201810030903589_AddProductDescriptionManCodePrice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810061036276_ChangePriceRequirementRulesFromOptionalToRequired.cs" />
+    <Compile Include="Migrations\201810061036276_ChangePriceRequirementRulesFromOptionalToRequired.Designer.cs">
+      <DependentUpon>201810061036276_ChangePriceRequirementRulesFromOptionalToRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810061104197_ChangeManufacturerCodeRequirementRuleFromOptionalToRequired.cs" />
+    <Compile Include="Migrations\201810061104197_ChangeManufacturerCodeRequirementRuleFromOptionalToRequired.Designer.cs">
+      <DependentUpon>201810061104197_ChangeManufacturerCodeRequirementRuleFromOptionalToRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +99,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810030903589_AddProductDescriptionManCodePrice.resx">
       <DependentUpon>201810030903589_AddProductDescriptionManCodePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810061036276_ChangePriceRequirementRulesFromOptionalToRequired.resx">
+      <DependentUpon>201810061036276_ChangePriceRequirementRulesFromOptionalToRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810061104197_ChangeManufacturerCodeRequirementRuleFromOptionalToRequired.resx">
+      <DependentUpon>201810061104197_ChangeManufacturerCodeRequirementRuleFromOptionalToRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
