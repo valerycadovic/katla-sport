@@ -76,7 +76,7 @@ namespace KatlaSport.WebApi.Controllers
         }
 
         [HttpPut]
-        [Route("{id:int:min(1)}")]
+        [Route("{hiveSectionId:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed hive section.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -94,7 +94,7 @@ namespace KatlaSport.WebApi.Controllers
         }
 
         [HttpDelete]
-        [Route("{id:int:min(1)}")]
+        [Route("{hiveSectionId:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed hive section.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
