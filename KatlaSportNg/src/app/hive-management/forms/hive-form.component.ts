@@ -12,6 +12,7 @@ export class HiveFormComponent implements OnInit {
 
   hive = new Hive(0, "", "", "", false, "");
   existed = false;
+  lastUpdate = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +38,7 @@ export class HiveFormComponent implements OnInit {
   
   onSubmit() {
     if (this.existed) {
-      this.hiveService.updateHive(this.hive).subscribe(p => this.navigateToHives())
+      this.hiveService.updateHive(this.hive).subscribe(p => this.navigateToHives());
     } else {
       this.hiveService.addHive(this.hive).subscribe(p => this.navigateToHives());
     }

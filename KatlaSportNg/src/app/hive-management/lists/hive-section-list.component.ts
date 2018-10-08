@@ -16,7 +16,6 @@ export class HiveSectionListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private hiveService: HiveService,
     private hiveSectionService: HiveSectionService
   ) { }
